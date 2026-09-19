@@ -97,6 +97,27 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
+              {/* Executive Leadership / Directors Block */}
+              <div className="space-y-2 pt-2 border-t border-slate-100">
+                <div className="font-bold text-slate-900 text-xs flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-blue-700 shrink-0" />
+                  <span>{isHindi ? 'कार्यकारी नेतृत्व एवं निदेशक मंडल:' : 'Executive Leadership & Directors:'}</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5 text-xs text-slate-800">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">{isHindi ? 'निदेशक:' : 'Director:'}</span>
+                    <span className="font-bold text-[#0B1E3F]">{isHindi ? 'अजय कुमार अहिर' : 'Ajay Kumar Ahir'}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 font-medium">{isHindi ? 'द्वितीय निदेशक:' : 'Second Director:'}</span>
+                    <span className="font-bold text-[#0B1E3F]">{isHindi ? 'जय कुमार यादव' : 'Jai kumar yadav'}</span>
+                  </div>
+                  <div className="text-[10.5px] text-slate-500 pt-1 border-t border-slate-200">
+                    {isHindi ? 'नामित भागीदार (LLP Designated Partners)' : 'Designated Partners • Ministry of Corporate Affairs'}
+                  </div>
+                </div>
+              </div>
+
               {/* Exact Office Hours Schedule Specified by User */}
               <div className="space-y-2 pt-2 border-t border-slate-100">
                 <div className="font-bold text-slate-900 text-xs flex items-center gap-2">

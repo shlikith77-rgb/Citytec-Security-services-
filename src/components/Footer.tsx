@@ -58,6 +58,21 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
+            {/* Executive Directors Governance */}
+            <div className="p-3 rounded-xl bg-blue-950/70 border border-blue-800/50 text-[11.5px] space-y-1">
+              <div className="text-amber-300 font-bold flex items-center gap-1.5 text-xs">
+                <span>{isHindi ? 'कार्यकारी नेतृत्व (निदेशक मंडल):' : 'Executive Board of Directors:'}</span>
+              </div>
+              <div className="text-slate-200">
+                <span className="font-semibold text-white">{isHindi ? 'निदेशक:' : 'Director:'}</span>{' '}
+                {isHindi ? 'अजय कुमार अहिर' : 'Ajay Kumar Ahir'}
+              </div>
+              <div className="text-slate-200">
+                <span className="font-semibold text-white">{isHindi ? 'द्वितीय निदेशक:' : 'Second Director:'}</span>{' '}
+                {isHindi ? 'जय कुमार यादव' : 'Jai kumar yadav'}
+              </div>
+            </div>
+
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenLegalModal}

@@ -22,6 +22,28 @@ export const COMPANY_INFO = {
     fullFormatted: 'Shop No. 130, SN 46, Jaiganeshvishwa, Nr. Kirti Hotel, Pune, Maharashtra, India – 411015'
   },
   operatingHours: '24 Hours / 7 Days Operational Command & Emergency Patrol Dispatch',
+  directors: [
+    {
+      name: 'Ajay Kumar Ahir',
+      role: 'Director',
+      designation: 'Designated Partner & Director',
+      nameHi: 'अजय कुमार अहिर',
+      roleHi: 'निदेशक',
+      designationHi: 'नामित भागीदार एवं निदेशक',
+      responsibilities: 'Operational Command, Defense Liaison & Security Protocols',
+      responsibilitiesHi: 'परिचालन कमान, रक्षा क्लाइंट समन्वय एवं सुरक्षा प्रोटोकॉल'
+    },
+    {
+      name: 'Jai kumar yadav',
+      role: 'Second Director',
+      designation: 'Designated Partner & Second Director',
+      nameHi: 'जय कुमार यादव',
+      roleHi: 'द्वितीय निदेशक',
+      designationHi: 'नामित भागीदार एवं द्वितीय निदेशक',
+      responsibilities: 'Integrated Facility Logistics, Manpower Supply & Statutory Compliance',
+      responsibilitiesHi: 'एकीकृत फैसिलिटी प्रबंधन, कार्यबल आपूर्ति एवं वैधानिक अनुपालन'
+    }
+  ],
   officeSchedule: [
     { day: 'Monday', hours: '10:00 AM – 6:00 PM' },
     { day: 'Tuesday', hours: '10:00 AM – 6:00 PM' },

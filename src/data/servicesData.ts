@@ -1,4 +1,5 @@
 import { ServiceItem } from '../types';
+import securityGuardImage from '../assets/images/security-guard-outside-gate.jpg';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
@@ -8,7 +9,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     tagline: 'Vigilant, PSARA-Compliant Manned Guarding & Surveillance',
     category: 'Security',
     iconName: 'ShieldCheck',
-    image: '/src/assets/images/indian_security_guard_1789817853563.jpg',
+    image: securityGuardImage,
     shortDescription: 'Trained, uniformed security guards, armed officers, perimeter security, and electronic surveillance for industrial, corporate, and government installations.',
     fullDescription: 'CITYTEC Security Services delivers comprehensive manned guarding and physical security frameworks. Our security personnel undergo strict police verification, background validation, and rigorous drills in crisis management, access control, emergency response protocol, and VIP escorting. We maintain a 24/7 central operational control desk to support quick-response deployments across Pune and Maharashtra.',
     keyDeliverables: [

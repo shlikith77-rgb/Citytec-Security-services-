@@ -106,6 +106,16 @@ export const TRANSLATIONS = {
     aboutReason2: 'Direct GeM & Defense Tender Readiness',
     aboutReason3: 'Zero Statutory Liabilities (EPF / ESIC Guaranteed)',
     aboutReason4: 'Rapid Standby Reserve for Surprise Audits',
+    leadershipBadge: 'Leadership & Corporate Governance',
+    leadershipTitle: 'Executive Leadership & Board of Directors',
+    leadershipSubtitle: 'Directed by experienced designated partners steering operational vigilance, institutional accountability, and statutory excellence.',
+    directorLabel: 'Director',
+    secondDirectorLabel: 'Second Director',
+    directorName1: 'Ajay Kumar Ahir',
+    directorRole1: 'Overall Operational Command, Defense Client Liaison & Security Strategy',
+    directorName2: 'Jai kumar yadav',
+    directorRole2: 'Integrated Facility Logistics, Manpower Supply & Statutory Compliance',
+    designatedPartnerNote: 'Designated Partners registered under the Ministry of Corporate Affairs (MCA), Government of India.',
 
     // Contact & Office Schedule
     contactBadge: 'Pune Headquarters',
@@ -234,6 +244,16 @@ export const TRANSLATIONS = {
     aboutReason2: 'GeM एवं रक्षा निविदाओं के लिए पूर्ण तत्परता',
     aboutReason3: 'शून्य वैधानिक दायित्व (EPF / ESIC गारंटीड चालान)',
     aboutReason4: 'आकस्मिक निरीक्षण एवं ऑडिट के लिए अतिरिक्त रिजर्व बल',
+    leadershipBadge: 'नेतृत्व एवं कॉर्पोरेट प्रशासन',
+    leadershipTitle: 'कार्यकारी नेतृत्व एवं निदेशक मंडल',
+    leadershipSubtitle: 'अनुभवी नामित भागीदारों द्वारा निर्देशित, जो परिचालन सतर्कता, संस्थागत जवाबदेही और वैधानिक उत्कृष्टता सुनिश्चित करते हैं।',
+    directorLabel: 'निदेशक',
+    secondDirectorLabel: 'द्वितीय निदेशक',
+    directorName1: 'अजय कुमार अहिर',
+    directorRole1: 'समग्र परिचालन कमान, रक्षा क्लाइंट समन्वय एवं सुरक्षा रणनीति',
+    directorName2: 'जय कुमार यादव',
+    directorRole2: 'एकीकृत फैसिलिटी लॉजिस्टिक्स, मैनपावर आपूर्ति एवं वैधानिक अनुपालन',
+    designatedPartnerNote: 'कॉर्पोरेट कार्य मंत्रालय (MCA), भारत सरकार के अधीन पंजीकृत नामित भागीदार (Designated Partners)।',
 
     // Contact & Office Schedule
     contactBadge: 'पुणे मुख्यालय',

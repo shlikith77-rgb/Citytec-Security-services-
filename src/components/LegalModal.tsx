@@ -185,8 +185,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 </div>
 
                 <div>
-                  <strong className="text-slate-900">2. Company-Provided Information: </strong>
-                  Company-specific information, including experience, services, certifications, registrations, compliance claims, personnel details, photographs and operational capabilities, is based on information and/or documentation provided or approved by CITYTEC. The website should not be treated as a replacement for official licences, certificates, registrations, tender documents, contracts or statutory records.
+                  <strong className="text-slate-900">2. Company-Provided Information &amp; Management: </strong>
+                  Company-specific information, including experience, services, registrations, compliance claims, personnel details, and operational capabilities, is based on records approved by CITYTEC SECURITY SERVICES LLP, operating under executive governance of <strong>Director Ajay Kumar Ahir</strong> and <strong>Second Director Jai kumar yadav</strong> (Designated Partners). The website should not be treated as a replacement for official licences, certificates, registrations, tender documents, contracts or statutory records.
                 </div>
 
                 <div>
