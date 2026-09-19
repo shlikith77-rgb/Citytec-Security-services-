@@ -1,6 +1,8 @@
 import React from 'react';
 import { X, CheckCircle2, Building, ShieldCheck, Users, ArrowRight } from 'lucide-react';
 import { ServiceItem } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { HINDI_SERVICES_MAP } from '../data/hindiData';
 
 interface ServiceDetailModalProps {
   service: ServiceItem | null;
@@ -13,7 +15,14 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   onClose,
   onSelectForQuote,
 }) => {
+  const { isHindi } = useLanguage();
+
   if (!service) return null;
+
+  const hindiData = HINDI_SERVICES_MAP[service.id];
+  const displayTitle = isHindi && hindiData?.title ? hindiData.title : service.title;
+  const displayTagline = isHindi && hindiData?.tagline ? hindiData.tagline : service.tagline;
+  const displayFullDesc = isHindi && hindiData?.fullDescription ? hindiData.fullDescription : service.fullDescription;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs overflow-y-auto animate-in fade-in">
@@ -23,7 +32,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-900 shrink-0">
           <img
             src={service.image}
-            alt={service.title}
+            alt={displayTitle}
             className="w-full h-full object-cover opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3F] via-[#0B1E3F]/60 to-transparent" />
@@ -41,10 +50,10 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
               Service 0{service.number} • {service.category}
             </span>
             <h3 className="text-xl sm:text-2xl font-black text-white">
-              {service.title}
+              {displayTitle}
             </h3>
             <p className="text-xs text-blue-200 line-clamp-1">
-              {service.tagline}
+              {displayTagline}
             </p>
           </div>
         </div>
@@ -55,10 +64,10 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           {/* Executive Overview */}
           <div className="space-y-2">
             <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider">
-              Operational Scope &amp; Overview
+              {isHindi ? 'परिचालन दायरा एवं विवरण' : 'Operational Scope & Overview'}
             </h4>
             <p className="text-sm text-slate-600 leading-relaxed">
-              {service.fullDescription}
+              {displayFullDesc}
             </p>
           </div>
 
@@ -66,7 +75,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-blue-600" />
-              <span>Core Service Deliverables</span>
+              <span>{isHindi ? 'मुख्य कार्य एवं सेवाएं' : 'Core Service Deliverables'}</span>
             </h4>
             <div className="grid grid-cols-1 gap-2">
               {service.keyDeliverables.map((item, idx) => (
@@ -86,7 +95,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             <div className="p-3.5 rounded-xl bg-blue-50/50 border border-blue-100 space-y-2">
               <h5 className="text-xs font-bold text-[#0B1E3F] uppercase tracking-wider flex items-center gap-1.5">
                 <Users className="w-3.5 h-3.5 text-blue-700" />
-                <span>Personnel Profiles</span>
+                <span>{isHindi ? 'तैनात कर्मचारी प्रोफाइल' : 'Personnel Profiles'}</span>
               </h5>
               <div className="flex flex-wrap gap-1.5">
                 {service.personnelProfiles.map((role, idx) => (
@@ -103,7 +112,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
               <h5 className="text-xs font-bold text-[#0B1E3F] uppercase tracking-wider flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Statutory Compliance</span>
+                <span>{isHindi ? 'वैधानिक अनुपालन' : 'Statutory Compliance'}</span>
               </h5>
               <ul className="text-[11px] text-slate-600 space-y-1">
                 {service.complianceStandards.slice(0, 3).map((std, idx) => (
@@ -120,7 +129,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           <div className="space-y-2">
             <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-2">
               <Building className="w-4 h-4 text-blue-600" />
-              <span>Recommended For</span>
+              <span>{isHindi ? 'अनुशंसित प्रतिष्ठान' : 'Recommended For'}</span>
             </h4>
             <div className="flex flex-wrap gap-2">
               {service.sectorsSuited.map((sector, idx) => (
@@ -138,26 +147,25 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
         {/* Modal Bottom Footer Actions */}
         <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-          <div className="text-xs text-slate-500 text-center sm:text-left">
-            <span>Direct Pune Office Inquiry: </span>
-            <strong className="text-slate-800">78418 64750</strong>
+          <div className="text-xs text-slate-500">
+            {isHindi ? 'पुणे कमान नियंत्रण कक्ष: 78418 64750' : 'Pune Operational Command: 78418 64750'}
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <button
               onClick={onClose}
-              className="flex-1 sm:flex-initial px-4 py-2 text-xs font-medium text-slate-600 hover:text-slate-800 rounded-lg hover:bg-slate-200/60 transition-colors"
+              className="flex-1 sm:flex-initial px-4 py-2 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
             >
-              Close
+              {isHindi ? 'बंद करें' : 'Close'}
             </button>
             <button
               onClick={() => {
-                onSelectForQuote(service.title);
                 onClose();
+                onSelectForQuote(displayTitle);
               }}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#0B1E3F] hover:bg-blue-800 text-white text-xs font-bold transition-colors shadow-sm"
             >
-              <span>Get RFP Quote for This</span>
+              <span>{isHindi ? 'इस सेवा हेतु कोटेशन लें' : 'Configure RFP Quote'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

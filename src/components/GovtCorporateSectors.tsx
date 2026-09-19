@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Landmark, Building2, Cross, Factory, CheckCircle2, FileText, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Landmark, Building2, Cross, Factory, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { SECTORS_SERVED } from '../data/companyData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 export const GovtCorporateSectors: React.FC = () => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
   const [selectedTab, setSelectedTab] = useState<'All' | 'Government' | 'Private'>('All');
 
   const filtered = selectedTab === 'All'
@@ -32,13 +36,13 @@ export const GovtCorporateSectors: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
-            <span>Institutional Coverage</span>
+            <span>{t.sectorsBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1E3F] tracking-tight">
-            Serving Government &amp; Private-Sector Organizations
+            {t.sectorsTitle}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            From stringent state tender compliances to rapid multinational enterprise SLAs, CITYTEC delivers unwavering institutional security and workforce precision.
+            {t.sectorsSubtitle}
           </p>
 
           {/* Filter Pills */}
@@ -51,7 +55,7 @@ export const GovtCorporateSectors: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              All Sectors
+              {isHindi ? 'सभी क्षेत्र' : 'All Sectors'}
             </button>
             <button
               onClick={() => setSelectedTab('Government')}
@@ -61,7 +65,7 @@ export const GovtCorporateSectors: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Government &amp; Public Sector
+              {isHindi ? 'सरकारी एवं सार्वजनिक क्षेत्र' : 'Government & Public Sector'}
             </button>
             <button
               onClick={() => setSelectedTab('Private')}
@@ -71,7 +75,7 @@ export const GovtCorporateSectors: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Private Enterprises &amp; MNCs
+              {isHindi ? 'निजी एवं कॉर्पोरेट प्रतिष्ठान' : 'Private Enterprises & MNCs'}
             </button>
           </div>
         </div>
@@ -92,7 +96,9 @@ export const GovtCorporateSectors: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700">
-                        {sector.category === 'Government' ? 'Public Sector & GeM' : 'Private Commercial'}
+                        {sector.category === 'Government' 
+                          ? (isHindi ? 'सार्वजनिक क्षेत्र एवं GeM' : 'Public Sector & GeM')
+                          : (isHindi ? 'निजी व्यावसायिक क्षेत्र' : 'Private Commercial')}
                       </span>
                       <h3 className="text-lg font-bold text-[#0B1E3F]">
                         {sector.title}
@@ -112,7 +118,7 @@ export const GovtCorporateSectors: React.FC = () => {
                 {/* Example Deployments List */}
                 <div className="space-y-2 pt-2 border-t border-slate-200/70">
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                    Key Deployment Environments:
+                    {isHindi ? 'प्रमुख तैनाती परिसर:' : 'Key Deployment Environments:'}
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {sector.examples.map((item, i) => (
@@ -131,13 +137,13 @@ export const GovtCorporateSectors: React.FC = () => {
               {/* Bottom Card Action */}
               <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between">
                 <span className="text-xs text-slate-500">
-                  Full statutory audit &amp; liability waiver provided
+                  {isHindi ? '100% वैधानिक ऑडिट एवं देनदारी मुक्ति' : 'Full statutory audit & liability waiver provided'}
                 </span>
                 <a
                   href="#estimator"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 transition-colors"
                 >
-                  <span>Submit RFP</span>
+                  <span>{isHindi ? 'आरएफपी सबमिट करें' : 'Submit RFP'}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -151,13 +157,15 @@ export const GovtCorporateSectors: React.FC = () => {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/60 border border-blue-700/50 text-[11px] font-bold text-cyan-300">
               <Landmark className="w-3 h-3 text-[#D4AF37]" />
-              <span>Government Procurement Notice</span>
+              <span>{isHindi ? 'सरकारी खरीद एवं निविदा सूचना' : 'Government Procurement Notice'}</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-white">
-              Public Sector &amp; GeM Tender Enquiries
+              {isHindi ? 'सार्वजनिक उपक्रम एवं GeM निविदा पूछताछ' : 'Public Sector & GeM Tender Enquiries'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Are you a government procurement officer, administrative officer, or tender committee member? CITYTEC SECURITY SERVICES LLP meets all pre-qualification requirements, statutory wage code filings, ESI/EPF challans, and GST compliance for direct GeM purchase or custom RFP bidding.
+              {isHindi
+                ? 'क्या आप सरकारी खरीद अधिकारी या निविदा समिति के सदस्य हैं? सिटीटेक सिक्योरिटी सर्विसेज एलएलपी GeM खरीद या राज्य निविदा बोली के लिए सभी पूर्व-योग्यताएं, न्यूनतम वेतन कोड, ईएसआई/ईपीएफ चालान और जीएसटी नियमों का पूर्ण पालन करती है।'
+                : 'Are you a government procurement officer, administrative officer, or tender committee member? CITYTEC SECURITY SERVICES LLP meets all pre-qualification requirements, statutory wage code filings, ESI/EPF challans, and GST compliance for direct GeM purchase or custom RFP bidding.'}
             </p>
           </div>
 
@@ -166,13 +174,13 @@ export const GovtCorporateSectors: React.FC = () => {
               href="#contact"
               className="w-full sm:w-auto text-center px-5 py-3 rounded-xl bg-[#D4AF37] hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md transition-colors"
             >
-              Direct Tender Desk: 78418 64750
+              {isHindi ? 'टेंडर डेस्क: 78418 64750' : 'Direct Tender Desk: 78418 64750'}
             </a>
             <a
               href="#estimator"
               className="w-full sm:w-auto text-center px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
             >
-              Download Tender Credentials
+              {isHindi ? 'प्रस्ताव अनुमानक खोलें' : 'Open RFP Estimator'}
             </a>
           </div>
         </div>

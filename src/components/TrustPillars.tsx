@@ -1,8 +1,15 @@
 import React from 'react';
 import { Shield, Lock, Award, Clock, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { CORE_PILLARS } from '../data/companyData';
+import { HINDI_PILLARS } from '../data/hindiData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 export const TrustPillars: React.FC = () => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
+  const activePillars = isHindi ? HINDI_PILLARS : CORE_PILLARS;
+
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'ShieldCheck':
@@ -29,19 +36,19 @@ export const TrustPillars: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider">
-            <span>Corporate Operational Standard</span>
+            <span>{isHindi ? 'संस्थागत विश्वसनीयता मानक' : 'Corporate Operational Standard'}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1E3F] tracking-tight">
-            Engineered for Absolute Institutional Confidence
+            {t.pillarsTitle}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Every contract managed by CITYTEC SECURITY SERVICES LLP is executed under our six non-negotiable operational tenets.
+            {t.pillarsSubtitle}
           </p>
         </div>
 
         {/* 6 Core Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {CORE_PILLARS.map((pillar, index) => (
+          {activePillars.map((pillar, index) => (
             <div
               key={index}
               className="group relative bg-slate-50/70 hover:bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-300 transition-all duration-200 shadow-xs hover:shadow-md space-y-4 text-left"
@@ -79,17 +86,19 @@ export const TrustPillars: React.FC = () => {
         <div className="mt-12 p-5 rounded-xl bg-gradient-to-r from-[#0B1E3F] via-[#102A54] to-[#0B1E3F] text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm border border-blue-900">
           <div className="space-y-0.5 text-center sm:text-left">
             <h4 className="text-sm font-bold text-white tracking-wide">
-              Serving Government Bodies, PSUs, IT Parks &amp; Industrial Facilities
+              {isHindi ? 'रक्षा प्रतिष्ठान, सरकारी संस्थान, पीएसयू एवं औद्योगिक परिसरों हेतु समर्पित' : 'Serving Defense Establishments, Government Bodies, PSUs & Industrial Facilities'}
             </h4>
             <p className="text-xs text-blue-200">
-              Need certified personnel with zero compliance liabilities? We mobilize deployed teams within 48 to 72 hours.
+              {isHindi
+                ? 'अनुभवी परिचालन कर्मचारियों एवं शून्य वैधानिक देनदारी के साथ तत्काल कार्यबल तैनाती उपलब्ध।'
+                : 'Need certified personnel with zero compliance liabilities? Experienced operational staff available for immediate deployment.'}
             </p>
           </div>
           <a
             href="#estimator"
             className="shrink-0 px-4 py-2 rounded-lg bg-[#D4AF37] hover:bg-amber-400 text-slate-950 font-bold text-xs tracking-wide transition-colors shadow-xs"
           >
-            Deploy Workforce →
+            {isHindi ? 'कार्यबल अनुमानक →' : 'Deploy Workforce →'}
           </a>
         </div>
 

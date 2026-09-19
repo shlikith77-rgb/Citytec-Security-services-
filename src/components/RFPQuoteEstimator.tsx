@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import { Calculator, CheckCircle2, Send, Phone, MessageSquare, Copy, Check, Shield, FileText } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { COMPANY_INFO } from '../data/companyData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
+import { HINDI_SERVICES_MAP } from '../data/hindiData';
 
 interface RFPQuoteEstimatorProps {
   preselectedService?: string;
 }
 
 export const RFPQuoteEstimator: React.FC<RFPQuoteEstimatorProps> = ({ preselectedService }) => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
+
   const [selectedService, setSelectedService] = useState<string>(
     preselectedService || 'Security Services'
   );
@@ -35,6 +41,7 @@ export const RFPQuoteEstimator: React.FC<RFPQuoteEstimatorProps> = ({ preselecte
 
   const sectors = [
     'Government / PSU / Civil Administrative Hub',
+    'Defense / Military Establishment',
     'Corporate IT & Tech Park',
     'Healthcare & Multi-Specialty Hospital',
     'Manufacturing Plant / Industrial Warehouse',
@@ -44,10 +51,10 @@ export const RFPQuoteEstimator: React.FC<RFPQuoteEstimatorProps> = ({ preselecte
   ];
 
   const shiftOptions = [
-    { label: '8 Hours (Single Shift)', desc: 'Standard business hours, office support & pantry' },
-    { label: '12 Hours (Two Shifts)', desc: 'Day & night factory or commercial facility coverage' },
-    { label: '24/7 Rotational (3 Shifts)', desc: 'Continuous uninterrupted manned guarding & response' },
-    { label: 'Project-Based / Turnaround', desc: 'Temporary event or facility overhaul deployment' }
+    { label: '8 Hours (Single Shift)', desc: isHindi ? 'मानक व्यावसायिक घंटे, कार्यालय सहायता एवं पेंट्री' : 'Standard business hours, office support & pantry' },
+    { label: '12 Hours (Two Shifts)', desc: isHindi ? 'दिन एवं रात का कारखाना या वाणिज्यिक परिसर कवरेज' : 'Day & night factory or commercial facility coverage' },
+    { label: '24/7 Rotational (3 Shifts)', desc: isHindi ? 'निरंतर निर्बाध सुरक्षा गार्ड एवं त्वरित प्रतिक्रिया' : 'Continuous uninterrupted manned guarding & response' },
+    { label: 'Project-Based / Turnaround', desc: isHindi ? 'अस्थाई कार्यक्रम या प्रतिष्ठान नवीनीकरण तैनाती' : 'Temporary event or facility overhaul deployment' }
   ];
 
   const generateProposalSummary = () => {
@@ -96,49 +103,53 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider">
             <Calculator className="w-3.5 h-3.5 text-blue-700" />
-            <span>Interactive Procurement Suite</span>
+            <span>{isHindi ? 'इंटरएक्टिव खरीद एवं लागत अनुमानक' : 'Interactive Procurement Suite'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1E3F] tracking-tight">
-            Corporate RFP &amp; Manpower Estimator
+            {t.estimatorTitle}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Configure your facility specifications to receive an instant operational scope draft and statutory rate quotation from our Pune deployment desk.
+            {t.estimatorSubtitle}
           </p>
         </div>
 
-        {/* 2-Column Workspace */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
           
-          {/* Left: Interactive Configurator Form */}
-          <div className="lg:col-span-7 bg-slate-50/80 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
+          {/* Left: Input Selection Controls */}
+          <div className="lg:col-span-7 bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-6">
             
-            {/* 1. Select Service */}
+            {/* 1. Service Selection */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F] block">
-                1. Select Desired Service Discipline
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center justify-between">
+                <span>1. {isHindi ? 'प्राथमिक सेवा अनुशासन चुनें' : 'Select Primary Service Discipline'}</span>
+                <span className="text-[11px] text-blue-600 font-normal">8 Core Disciplines</span>
               </label>
               <select
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none shadow-2xs"
               >
-                {SERVICES_DATA.map((srv) => (
-                  <option key={srv.id} value={srv.title}>
-                    0{srv.number}. {srv.title} ({srv.category})
-                  </option>
-                ))}
+                {SERVICES_DATA.map((s) => {
+                  const hi = HINDI_SERVICES_MAP[s.id];
+                  const label = isHindi && hi?.title ? hi.title : s.title;
+                  return (
+                    <option key={s.id} value={s.title}>
+                      0{s.number}. {label}
+                    </option>
+                  );
+                })}
               </select>
             </div>
 
-            {/* 2. Select Sector */}
+            {/* 2. Sector Type */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F] block">
-                2. Enterprise Sector / Facility Type
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                2. {isHindi ? 'प्रतिष्ठान का क्षेत्र वर्गीकरण' : 'Sector Classification'}
               </label>
               <select
                 value={selectedSector}
                 onChange={(e) => setSelectedSector(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none shadow-2xs"
               >
                 {sectors.map((sec, i) => (
                   <option key={i} value={sec}>
@@ -148,67 +159,55 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
               </select>
             </div>
 
-            {/* 3. Headcount Slider & Numeric Presets */}
+            {/* 3. Manpower Headcount Slider */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F]">
-                  3. Required Personnel Headcount
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  3. {isHindi ? 'आवश्यक कर्मियों की संख्या' : 'Required Personnel Headcount'}
                 </label>
-                <span className="text-base font-extrabold text-blue-700 bg-blue-100/80 px-3 py-0.5 rounded-lg border border-blue-200">
-                  {headcount} {headcount === 1 ? 'Person' : 'Personnel'}
-                </span>
+                <div className="px-3 py-1 rounded-lg bg-blue-900 text-white font-extrabold text-sm shadow-xs">
+                  {headcount} {isHindi ? 'कर्मचारी' : 'Staff Members'}
+                </div>
               </div>
 
               <input
                 type="range"
-                min="2"
-                max="120"
+                min="1"
+                max="150"
                 step="1"
                 value={headcount}
                 onChange={(e) => setHeadcount(Number(e.target.value))}
-                className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-700"
               />
-
-              {/* Headcount Fast Buttons */}
-              <div className="flex flex-wrap gap-2 pt-1">
-                {[5, 10, 25, 50, 80, 100].map((num) => (
-                  <button
-                    key={num}
-                    type="button"
-                    onClick={() => setHeadcount(num)}
-                    className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors ${
-                      headcount === num
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
-                    }`}
-                  >
-                    {num} Staff
-                  </button>
-                ))}
+              <div className="flex justify-between text-[10.5px] text-slate-400 font-medium">
+                <span>1 (Single Guard/Post)</span>
+                <span>25 (Standard Complex)</span>
+                <span>75 (Large Plant)</span>
+                <span>150+ (Enterprise Brigade)</span>
               </div>
             </div>
 
-            {/* 4. Shift Model */}
+            {/* 4. Shift Configuration */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F] block">
-                4. Operational Shift Model
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                4. {isHindi ? 'शिफ्ट एवं परिचालन समय' : 'Shift & Operational Model'}
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {shiftOptions.map((opt, i) => (
+                {shiftOptions.map((opt, idx) => (
                   <button
-                    key={i}
+                    key={idx}
                     type="button"
                     onClick={() => setShiftModel(opt.label)}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       shiftModel === opt.label
                         ? 'bg-white border-blue-600 ring-2 ring-blue-600/20 shadow-xs'
-                        : 'bg-white/60 border-slate-200 hover:bg-white hover:border-slate-300'
+                        : 'bg-white/70 border-slate-200 hover:bg-white hover:border-slate-300'
                     }`}
                   >
-                    <div className={`text-xs font-bold ${shiftModel === opt.label ? 'text-blue-700' : 'text-slate-800'}`}>
+                    <div className="text-xs font-bold text-[#0B1E3F]">
                       {opt.label}
                     </div>
-                    <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-500 leading-tight mt-0.5">
                       {opt.desc}
                     </div>
                   </button>
@@ -216,51 +215,62 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
               </div>
             </div>
 
-            {/* 5. Deployment Hub Location */}
+            {/* 5. Deployment Node */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F] block">
-                5. Primary Deployment City / Industrial Zone
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                5. {isHindi ? 'तैनाती स्थान' : 'Deployment Location in Maharashtra'}
               </label>
-              <input
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g. Pune City, Hinjawadi Phase 1, Chakan MIDC, Bhosari"
-                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs"
-              />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {['Pune / PCMC Region', 'Chakan / Talegaon MIDC', 'Ranjangaon / Sanaswadi', 'Mumbai / MMR / Rest of MH'].map(
+                  (loc, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setLocation(loc)}
+                      className={`p-2 rounded-lg text-center text-xs font-semibold border transition-all ${
+                        location === loc
+                          ? 'bg-blue-900 text-white border-blue-900 shadow-2xs'
+                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      {loc}
+                    </button>
+                  )
+                )}
+              </div>
             </div>
 
-            {/* Contact Details Grid */}
-            <div className="pt-4 border-t border-slate-200 space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B1E3F]">
-                Procurement / Contact Officer Information
-              </h4>
+            {/* Client Info Sub-Form */}
+            <div className="pt-4 border-t border-slate-200 space-y-3">
+              <div className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                {isHindi ? 'आपका आधिकारिक संपर्क विवरण' : 'Your Official Contact Details (For Fast Callback)'}
+              </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   type="text"
-                  placeholder="Officer Name *"
+                  placeholder={isHindi ? 'नाम / अधिकारी का पद *' : 'Your Name / Officer Designation *'}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none"
                 />
                 <input
                   type="text"
-                  placeholder="Organization / Company Name *"
+                  placeholder={isHindi ? 'कंपनी / संगठन का नाम *' : 'Organization / Company Name *'}
                   value={organization}
                   onChange={(e) => setOrganization(e.target.value)}
                   className="px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none"
                 />
                 <input
                   type="tel"
-                  placeholder="Direct Phone / Mobile *"
+                  placeholder={isHindi ? 'सीधा फोन / मोबाइल *' : 'Direct Phone / Mobile *'}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none"
                 />
                 <input
                   type="email"
-                  placeholder="Official Email Address"
+                  placeholder={isHindi ? 'आधिकारिक ईमेल पता' : 'Official Email Address'}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none"
@@ -269,7 +279,11 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
 
               <textarea
                 rows={2}
-                placeholder="Specific instructions or existing vendor transition timeline (Optional)"
+                placeholder={
+                  isHindi
+                    ? 'विशेष निर्देश या मौजूदा वेंडर परिवर्तन समयसीमा (वैकल्पिक)'
+                    : 'Specific instructions or existing vendor transition timeline (Optional)'
+                }
                 value={specialInstructions}
                 onChange={(e) => setSpecialInstructions(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none"
@@ -290,7 +304,7 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-                      RFP Operational Brief
+                      {isHindi ? 'आरएफपी परिचालन सारांश' : 'RFP Operational Brief'}
                     </h3>
                     <p className="text-[11px] text-blue-200">
                       CITYTEC SECURITY SERVICES LLP
@@ -312,23 +326,23 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
               {/* Dynamic Highlights */}
               <div className="space-y-3 text-xs">
                 <div className="flex justify-between py-1.5 border-b border-blue-900">
-                  <span className="text-slate-400">Selected Service:</span>
+                  <span className="text-slate-400">{isHindi ? 'चयनित सेवा:' : 'Selected Service:'}</span>
                   <span className="font-bold text-cyan-300 text-right">{selectedService}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-blue-900">
-                  <span className="text-slate-400">Target Sector:</span>
+                  <span className="text-slate-400">{isHindi ? 'लक्षित क्षेत्र:' : 'Target Sector:'}</span>
                   <span className="font-bold text-white text-right">{selectedSector}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-blue-900">
-                  <span className="text-slate-400">Deployment Strength:</span>
-                  <span className="font-extrabold text-[#D4AF37] text-right">{headcount} Personnel</span>
+                  <span className="text-slate-400">{isHindi ? 'तैनाती बल:' : 'Deployment Strength:'}</span>
+                  <span className="font-extrabold text-[#D4AF37] text-right">{headcount} {isHindi ? 'कार्मिक' : 'Personnel'}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-blue-900">
-                  <span className="text-slate-400">Shift Coverage:</span>
+                  <span className="text-slate-400">{isHindi ? 'शिफ्ट कवरेज:' : 'Shift Coverage:'}</span>
                   <span className="font-bold text-slate-200 text-right">{shiftModel}</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-blue-900">
-                  <span className="text-slate-400">Deployment Node:</span>
+                  <span className="text-slate-400">{isHindi ? 'स्थान नोड:' : 'Deployment Node:'}</span>
                   <span className="font-bold text-slate-200 text-right">{location}</span>
                 </div>
               </div>
@@ -337,24 +351,24 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
               <div className="p-3.5 rounded-xl bg-blue-950/80 border border-blue-800/60 space-y-2">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
                   <Shield className="w-3.5 h-3.5" />
-                  <span>Standard Statutory Coverage Included:</span>
+                  <span>{isHindi ? 'मानक वैधानिक कवरेज सम्मिलित:' : 'Standard Statutory Coverage Included:'}</span>
                 </div>
                 <ul className="text-[11px] text-slate-300 space-y-1">
                   <li className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                    <span>EPF &amp; ESIC employer + employee contributions</span>
+                    <span>EPF &amp; ESIC नियोक्ता और कर्मचारी वैधानिक अंशदान</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                    <span>Complete uniform, badges, whistle &amp; safety boots</span>
+                    <span>पूर्ण वर्दी, बैज, सीटी एवं सुरक्षा जूते</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                    <span>Regular Field Officer supervisory night rounds</span>
+                    <span>फील्ड ऑफिसर द्वारा नियमित रात्रि गश्त एवं निरीक्षण</span>
                   </li>
                   <li className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                    <span>Guaranteed reliever replacement within 2 hours</span>
+                    <span>2 घंटे के भीतर गारंटीकृत रिलीवर प्रतिस्थापन</span>
                   </li>
                 </ul>
               </div>
@@ -367,7 +381,7 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs tracking-wide shadow-md transition-all transform hover:-translate-y-0.5"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Send Proposal via WhatsApp (78418 64750)</span>
+                  <span>{isHindi ? 'व्हाट्सएप द्वारा प्रस्ताव भेजें (78418 64750)' : 'Send Proposal via WhatsApp (78418 64750)'}</span>
                 </button>
 
                 <form onSubmit={handleFormSubmit}>
@@ -376,25 +390,25 @@ Additional Scope Notes: ${specialInstructions || 'Standard statutory compliance 
                     className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide shadow-md transition-all"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Submit RFP to Pune Operations Desk</span>
+                    <span>{isHindi ? 'पुणे परिचालन नियंत्रण कक्ष को भेजें' : 'Submit RFP to Pune Operations Desk'}</span>
                   </button>
                 </form>
 
                 {submittedMessage && (
                   <div className="p-3 rounded-lg bg-emerald-900/60 border border-emerald-500/50 text-emerald-200 text-xs text-center font-semibold animate-in fade-in">
-                    ✓ RFP Transmitted! Our Pune Operations Director will contact you at {phone || 'your phone'} within 4 hours.
+                    ✓ {isHindi ? 'आरएफपी प्राप्त हुआ! हमारे निदेशक 4 घंटे में संपर्क करेंगे।' : `RFP Transmitted! Our Pune Operations Director will contact you at ${phone || 'your phone'} within 4 hours.`}
                   </div>
                 )}
               </div>
 
               {/* Emergency Call info */}
               <div className="pt-2 border-t border-blue-900 text-center text-xs text-slate-400">
-                <span>Immediate Assistance or Urgent Tender: </span>
+                <span>{isHindi ? 'तत्काल सहायता अथवा निविदा पूछताछ: ' : 'Immediate Assistance or Urgent Tender: '}</span>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="text-amber-300 hover:underline font-bold"
                 >
-                  Call +91 78418 64750
+                  {isHindi ? 'कॉल करें' : 'Call'} +91 78418 64750
                 </a>
               </div>
 

@@ -13,6 +13,9 @@ import {
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceItem } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
+import { HINDI_SERVICES_MAP } from '../data/hindiData';
 
 interface ServicesSectionProps {
   onSelectService: (service: ServiceItem) => void;
@@ -23,14 +26,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   onSelectService,
   onQuickQuote,
 }) => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const categories = [
-    { id: 'All', label: 'All 8 Services' },
-    { id: 'Security', label: 'Security Services' },
-    { id: 'Facility', label: 'Facility & Housekeeping' },
-    { id: 'Manpower', label: 'Manpower & Hiring' },
-    { id: 'Specialized', label: 'Hospital Sanitization & Specialized' },
+    { id: 'All', label: t.servicesFilterAll },
+    { id: 'Security', label: t.servicesFilterSecurity },
+    { id: 'Facility', label: t.servicesFilterFacility },
+    { id: 'Manpower', label: t.servicesFilterManpower },
+    { id: 'Specialized', label: t.servicesFilterSpecialized },
   ];
 
   const filteredServices = activeCategory === 'All'
@@ -69,13 +74,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <div className="max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider">
               <Layers className="w-3.5 h-3.5 text-blue-700" />
-              <span>Full Operational Portfolio</span>
+              <span>{t.servicesBadge}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1E3F] tracking-tight">
-              Enterprise Services Portfolio
+              {t.servicesTitle}
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Tailored physical guarding, mechanized sanitation, and statutory manpower staffing compliant with state &amp; central government guidelines.
+              {t.servicesSubtitle}
             </p>
           </div>
 
@@ -99,93 +104,101 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
         {/* 8 Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              className="group bg-white rounded-2xl border border-slate-200 hover:border-blue-300 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden text-left"
-            >
-              {/* Card Image Banner */}
-              <div className="relative h-44 w-full overflow-hidden bg-slate-100 shrink-0">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3F]/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+          {filteredServices.map((service) => {
+            const hindiData = HINDI_SERVICES_MAP[service.id];
+            const displayTitle = isHindi && hindiData?.title ? hindiData.title : service.title;
+            const displayShortDesc = isHindi && hindiData?.shortDescription ? hindiData.shortDescription : service.shortDescription;
 
-                {/* Service Tag & Category */}
-                <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                  <span className="px-2 py-0.5 rounded-md bg-[#0B1E3F]/90 backdrop-blur-xs text-[10px] font-bold text-white border border-blue-400/30 uppercase tracking-wider">
-                    0{service.number}
-                  </span>
-                  <span className="px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-bold text-slate-800 uppercase tracking-wider">
-                    {service.category}
-                  </span>
-                </div>
+            return (
+              <div
+                key={service.id}
+                className="group bg-white rounded-2xl border border-slate-200 hover:border-blue-300 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden text-left"
+              >
+                {/* Card Image Banner */}
+                <div className="relative h-44 w-full overflow-hidden bg-slate-100 shrink-0">
+                  <img
+                    src={service.image}
+                    alt={displayTitle}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3F]/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                {/* Service Icon Badge */}
-                <div className="absolute -bottom-3 right-4 w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
-                  {renderIcon(service.iconName)}
-                </div>
-              </div>
-
-              {/* Card Content */}
-              <div className="p-5 pt-6 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-[#0B1E3F] group-hover:text-blue-700 transition-colors leading-snug">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                    {service.shortDescription}
-                  </p>
-                </div>
-
-                {/* Key Deliverables Bullet Excerpt */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-100">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Highlights:
+                  {/* Service Tag & Category */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded-md bg-[#0B1E3F]/90 backdrop-blur-xs text-[10px] font-bold text-white border border-blue-400/30 uppercase tracking-wider">
+                      0{service.number}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-xs text-[10px] font-bold text-slate-800 uppercase tracking-wider">
+                      {service.category}
+                    </span>
                   </div>
-                  <ul className="text-[11.5px] text-slate-600 space-y-1">
-                    {service.keyDeliverables.slice(0, 2).map((del, i) => (
-                      <li key={i} className="flex items-start gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                        <span className="line-clamp-1">{del}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  {/* Service Icon Badge */}
+                  <div className="absolute -bottom-3 right-4 w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {renderIcon(service.iconName)}
+                  </div>
                 </div>
 
-                {/* Card Action Buttons */}
-                <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
-                  <button
-                    onClick={() => onSelectService(service)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-100 hover:bg-blue-50 text-[#0B1E3F] hover:text-blue-700 text-xs font-semibold transition-colors"
-                  >
-                    <span>View Scope</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
+                {/* Card Content */}
+                <div className="p-5 pt-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="text-base font-bold text-[#0B1E3F] group-hover:text-blue-700 transition-colors leading-snug">
+                      {displayTitle}
+                    </h3>
+                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                      {displayShortDesc}
+                    </p>
+                  </div>
 
-                  <button
-                    onClick={() => onQuickQuote(service.title)}
-                    className="px-3 py-2 rounded-lg bg-[#0B1E3F] hover:bg-blue-800 text-white text-xs font-bold transition-colors shadow-xs"
-                    title="Calculate RFP for this service"
-                  >
-                    Get Quote
-                  </button>
+                  {/* Key Deliverables Bullet Excerpt */}
+                  <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      {isHindi ? 'मुख्य विशेषताएं:' : 'Highlights:'}
+                    </div>
+                    <ul className="text-[11.5px] text-slate-600 space-y-1">
+                      {service.keyDeliverables.slice(0, 2).map((del, i) => (
+                        <li key={i} className="flex items-start gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                          <span className="line-clamp-1">{del}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Card Action Buttons */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
+                    <button
+                      onClick={() => onSelectService(service)}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-100 hover:bg-blue-50 text-[#0B1E3F] hover:text-blue-700 text-xs font-semibold transition-colors"
+                    >
+                      <span>{isHindi ? 'विस्तार देखें' : 'View Scope'}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+
+                    <button
+                      onClick={() => onQuickQuote(displayTitle)}
+                      className="px-3 py-2 rounded-lg bg-[#0B1E3F] hover:bg-blue-800 text-white text-xs font-bold transition-colors shadow-xs"
+                      title="Calculate RFP for this service"
+                    >
+                      {isHindi ? 'कोटेशन' : 'Get Quote'}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Corporate Note at Bottom */}
         <div className="mt-12 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 text-left">
           <div className="space-y-1 max-w-2xl">
             <h4 className="text-sm font-bold text-[#0B1E3F]">
-              Need a Custom Multi-Disciplinary Facility Management Contract?
+              {isHindi ? 'एकीकृत बहु-विषयक फैसिलिटी प्रबंधन अनुबंध की आवश्यकता है?' : 'Need a Custom Multi-Disciplinary Facility Management Contract?'}
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
-              We bundle Security Services, Housekeeping, Hospital Sanitization, and Office Helpers under a unified Service Level Agreement (SLA) with single-invoice billing and dedicated operational managers.
+              {isHindi
+                ? 'हम सुरक्षा गार्ड, हाउसकीपिंग, अस्पताल सैनिटाइजेशन और कार्यालय सहायकों को एकल चालान और समर्पित परिचालन पर्यवेक्षकों के साथ एकीकृत SLA के तहत प्रदान करते हैं।'
+                : 'We bundle Security Services, Housekeeping, Hospital Sanitization, and Office Helpers under a unified Service Level Agreement (SLA) with single-invoice billing and dedicated operational managers.'}
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
@@ -193,7 +206,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               href="#estimator"
               className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition-colors"
             >
-              Configure Custom SLA RFP
+              {isHindi ? 'आरएफपी कॉन्फ़िगर करें' : 'Configure Custom SLA RFP'}
             </a>
           </div>
         </div>

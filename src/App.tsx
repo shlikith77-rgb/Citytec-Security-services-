@@ -4,19 +4,25 @@ import { Hero } from './components/Hero';
 import { TrustPillars } from './components/TrustPillars';
 import { ServicesSection } from './components/ServicesSection';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
+import { ClientsSection } from './components/ClientsSection';
 import { GovtCorporateSectors } from './components/GovtCorporateSectors';
 import { ComplianceShowcase } from './components/ComplianceShowcase';
+import { FaqSection } from './components/FaqSection';
 import { RFPQuoteEstimator } from './components/RFPQuoteEstimator';
 import { AboutCompany } from './components/AboutCompany';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LogoUploadModal } from './components/LogoUploadModal';
+import { LegalModal } from './components/LegalModal';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { ServiceItem } from './types';
 import { SERVICES_DATA } from './data/servicesData';
 import { COMPANY_INFO } from './data/companyData';
 import { Phone, MessageSquare, ArrowUp } from 'lucide-react';
 
-export default function App() {
+const MainAppContent: React.FC = () => {
+  const { isHindi } = useLanguage();
+
   const [customLogoUrl, setCustomLogoUrl] = useState<string | null>(() => {
     try {
       return localStorage.getItem('citytec_custom_logo') || null;
@@ -26,6 +32,7 @@ export default function App() {
   });
 
   const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
   const [preselectedServiceForEstimator, setPreselectedServiceForEstimator] = useState<string>('Security Services');
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -78,10 +85,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 font-['Plus_Jakarta_Sans',sans-serif]">
-      {/* 1. Header with Top Emergency Dispatch Bar & Nav */}
+      {/* 1. Header with Language Switcher, Emergency Dispatch Bar, Legal Trigger & Nav */}
       <Header
         customLogoUrl={customLogoUrl}
         onOpenLogoModal={() => setIsLogoModalOpen(true)}
+        onOpenLegalModal={() => setIsLegalModalOpen(true)}
       />
 
       {/* 2. Hero Section with Institutional Grade Value Proposition */}
@@ -103,28 +111,35 @@ export default function App() {
           onQuickQuote={handleQuickQuote}
         />
 
-        {/* 5. Government & Private Sector Readiness */}
+        {/* 5. Defense, Armed Forces & Ordnance Factory Clients Section */}
+        <ClientsSection />
+
+        {/* 6. Government & Private Sector Readiness */}
         <GovtCorporateSectors />
 
-        {/* 6. Statutory Compliance & Zero Client Liability */}
+        {/* 7. Statutory Compliance & Zero Client Liability */}
         <ComplianceShowcase />
 
-        {/* 7. Interactive Corporate RFP & Manpower Estimator */}
+        {/* 8. Frequently Asked Questions (5 Key Corporate Questions) */}
+        <FaqSection />
+
+        {/* 9. Interactive Corporate RFP & Manpower Estimator */}
         <RFPQuoteEstimator
           preselectedService={preselectedServiceForEstimator}
         />
 
-        {/* 8. Executive Company Profile & Pune Headquarters */}
+        {/* 10. Executive Company Profile & Pune Headquarters */}
         <AboutCompany />
 
-        {/* 9. Official Registered Address & Contact Desk */}
+        {/* 11. Official Registered Address & Contact Desk with Exact Hours */}
         <ContactSection />
       </main>
 
-      {/* 10. Institutional Footer */}
+      {/* 12. Institutional Footer */}
       <Footer
         customLogoUrl={customLogoUrl}
         onOpenLogoModal={() => setIsLogoModalOpen(true)}
+        onOpenLegalModal={() => setIsLegalModalOpen(true)}
         onSelectServiceTitle={handleServiceSelectFromFooter}
       />
 
@@ -143,12 +158,20 @@ export default function App() {
         onApplyLogo={handleApplyLogo}
       />
 
+      {/* Privacy Policies, Terms & Conditions, and Clients Approval Modal */}
+      <LegalModal
+        isOpen={isLegalModalOpen}
+        onClose={() => setIsLegalModalOpen(false)}
+      />
+
       {/* Floating Action Speed-Dial for Mobile & Desktop */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5">
         {/* WhatsApp Quick Dispatch Button */}
         <a
           href={`https://wa.me/917841864750?text=${encodeURIComponent(
-            'Hello CITYTEC SECURITY SERVICES LLP, I would like to inquire about your corporate security and facility management services in Pune.'
+            isHindi
+              ? 'नमस्ते सिटीटेक सिक्योरिटी सर्विसेज एलएलपी पुणे, मुझे आपकी कॉर्पोरेट सुरक्षा और जनशक्ति सेवाओं की जानकारी चाहिए।'
+              : 'Hello CITYTEC SECURITY SERVICES LLP, I would like to inquire about your corporate security and facility management services in Pune.'
           )}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -181,5 +204,13 @@ export default function App() {
         )}
       </div>
     </div>
+  );
+};
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainAppContent />
+    </LanguageProvider>
   );
 }

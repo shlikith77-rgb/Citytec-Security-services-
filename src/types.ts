@@ -31,6 +31,25 @@ export interface PillarItem {
   accentColor: string;
 }
 
+export interface ClientItem {
+  id: string;
+  name: string;
+  shortName: string;
+  category: 'Defense' | 'Armed Forces' | 'R&D / DGQA' | 'Ordnance';
+  location: string;
+  badgeCode: string;
+  badgeType: 'army' | 'navy' | 'airforce' | 'drdo' | 'ordnance' | 'dgqa' | 'command';
+  scope: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+  category: string;
+}
+
+export type Language = 'en' | 'hi';
+
 export interface QuoteRequest {
   serviceId: string;
   sector: string;

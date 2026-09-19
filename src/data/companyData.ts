@@ -5,7 +5,8 @@ export const COMPANY_INFO = {
   shortName: 'CITYTEC',
   subtitle: 'Security Services & Integrated Facility Management LLP',
   businessType: 'Private Security, Housekeeping, Facility Management & Manpower Outsourcing',
-  establishedNote: 'Serving Institutional, Government & Private Enterprise Clients Across Maharashtra',
+  establishedNote: 'Incorporated in 2026 with Experienced Operational Staff Serving Defense, Government & Private Enterprise Clients Across Maharashtra',
+  incorporationYear: 2026,
   phone: '78418 64750',
   phoneFormatted: '+91 78418 64750',
   email: 'contact@citytecservices.com',
@@ -20,8 +21,17 @@ export const COMPANY_INFO = {
     pincode: '411015',
     fullFormatted: 'Shop No. 130, SN 46, Jaiganeshvishwa, Nr. Kirti Hotel, Pune, Maharashtra, India – 411015'
   },
-  operatingHours: '24 Hours / 7 Days Operational Command & Patrol Dispatch',
-  officeHours: 'Mon – Sat: 09:30 AM – 07:00 PM IST (Emergency Line 24/7)'
+  operatingHours: '24 Hours / 7 Days Operational Command & Emergency Patrol Dispatch',
+  officeSchedule: [
+    { day: 'Monday', hours: '10:00 AM – 6:00 PM' },
+    { day: 'Tuesday', hours: '10:00 AM – 6:00 PM' },
+    { day: 'Wednesday', hours: '10:00 AM – 6:00 PM' },
+    { day: 'Thursday', hours: '10:00 AM – 6:00 PM' },
+    { day: 'Friday', hours: '10:00 AM – 6:00 PM' },
+    { day: 'Saturday', hours: '10:00 AM – 5:00 PM' },
+    { day: 'Sunday', hours: 'Closed' }
+  ],
+  officeHours: 'Mon – Fri: 10:00 AM – 6:00 PM | Sat: 10:00 AM – 5:00 PM | Sun: Closed (24/7 Emergency Dispatch Active)'
 };
 
 export const CORE_PILLARS: PillarItem[] = [
@@ -35,7 +45,7 @@ export const CORE_PILLARS: PillarItem[] = [
   {
     title: 'Security',
     subtitle: 'Vigilant & Uncompromising',
-    description: 'Military-inspired patrol discipline, rigorous gate control protocols, and rapid emergency intervention capabilities.',
+    description: 'Disciplined patrol standards, rigorous gate control protocols, and rapid emergency intervention capabilities.',
     icon: 'Lock',
     accentColor: 'royal'
   },
@@ -55,8 +65,8 @@ export const CORE_PILLARS: PillarItem[] = [
   },
   {
     title: 'Experience',
-    subtitle: 'Field-Tested Protocols',
-    description: 'Decades of collective leadership expertise handling complex government tenders, industrial plants, and healthcare campuses.',
+    subtitle: 'Field-Tested Staff',
+    description: 'Experienced operational staff and seasoned supervisory personnel adept in defense, government, industrial and healthcare facilities.',
     icon: 'TrendingUp',
     accentColor: 'sky'
   },
@@ -90,9 +100,9 @@ export const SECTORS_SERVED: SectorItem[] = [
     title: 'Healthcare & Hospital Networks',
     category: 'Private',
     description: 'Specialized bio-medical sanitization, ICU/OT disinfection protocols, ambulance parking management, and sensitive patient-ward orderlies.',
-    examples: ['Super-Specialty Hospitals', 'Diagnostic & Pathological Labs', 'Pharmaceutical Manufacturing', 'Daycare Surgery Centers'],
+    examples: ['Multi-Specialty Hospitals', 'Diagnostic & Pathological Labs', 'Pharmaceutical Manufacturing', 'Daycare Surgery Centers'],
     icon: 'Cross',
-    highlight: 'NABH & Biomedical Waste Standard'
+    highlight: 'Biomedical Waste & Infection Control Protocol'
   },
   {
     title: 'Manufacturing & Industrial Warehouses',
@@ -110,12 +120,12 @@ export const STATUTORY_CREDENTIALS = [
   { label: 'Police Verification', detail: 'Mandatory CID / Local Police antecedent clearance for every staff' },
   { label: 'GeM Registered', detail: 'Government e-Marketplace verified vendor for institutional bids' },
   { label: 'Quality Framework', detail: 'Standard Operating Procedures aligned with ISO 9001:2015 Quality Management' },
-  { label: 'Disaster Preparedness', detail: 'Fire Safety, Basic Life Support (BLS), and First-Aid Certified Supervisors' }
+  { label: 'Disaster Preparedness', detail: 'Emergency Response, Basic Life Support (BLS), and First-Aid Trained Personnel' }
 ];
 
 export const COMPANY_STATS = [
   { value: '100%', label: 'Statutory Compliance', subtext: 'Zero Audit Deficiencies' },
   { value: '24/7', label: 'Command Desk', subtext: 'Real-Time Rapid Dispatch' },
   { value: '8+', label: 'Core Disciplines', subtext: 'Integrated Facility Matrix' },
-  { value: 'Pune, MH', label: 'Headquarters Hub', subtext: 'Jaiganeshvishwa Central Office' }
+  { value: '2026', label: 'Incorporated LLP', subtext: 'Experienced Operational Staff' }
 ];

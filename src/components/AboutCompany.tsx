@@ -1,8 +1,13 @@
 import React from 'react';
-import { Shield, Building, Award, CheckCircle2, Phone, MapPin, Eye, Compass, Users } from 'lucide-react';
+import { Shield, Building, Award, CheckCircle2, Phone, MapPin, Users, Calendar } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 export const AboutCompany: React.FC = () => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
+
   return (
     <section id="about" className="py-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +35,7 @@ export const AboutCompany: React.FC = () => {
                       CITYTEC LLP
                     </div>
                     <div className="text-[11px] font-semibold text-slate-500">
-                      Pune Registered
+                      {isHindi ? 'निगमन वर्ष: 2026 • पुणे' : 'Inc. Year: 2026 • Pune'}
                     </div>
                   </div>
                 </div>
@@ -40,10 +45,10 @@ export const AboutCompany: React.FC = () => {
               <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/10 text-white space-y-1 text-left">
                 <div className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
                   <Award className="w-3.5 h-3.5" />
-                  <span>Dual Sector Compliance</span>
+                  <span>{isHindi ? 'अनुभवी परिचालन कर्मचारी' : 'Experienced Operational Staff'}</span>
                 </div>
                 <div className="text-sm font-bold text-white">
-                  Government &amp; Private Sector Deployments
+                  {isHindi ? 'रक्षा, सरकारी एवं निजी क्षेत्र की सेवाएं' : 'Defense, Govt & Enterprise Deployments'}
                 </div>
                 <div className="text-xs text-slate-300 flex items-center gap-1">
                   <MapPin className="w-3 h-3 text-cyan-400" />
@@ -72,13 +77,13 @@ export const AboutCompany: React.FC = () => {
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-bold uppercase tracking-wider">
                 <Building className="w-3.5 h-3.5 text-blue-700" />
-                <span>Executive Company Profile</span>
+                <span>{t.aboutBadge}</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1E3F] tracking-tight">
-                Setting New Benchmarks in Security, Facility &amp; Manpower Excellence
+                {t.aboutTitle}
               </h2>
               <p className="text-base text-slate-600 leading-relaxed">
-                <strong className="text-slate-900">CITYTEC SECURITY SERVICES LLP</strong> is a premier integrated facility management and specialized manpower outsourcing enterprise headquartered in Pune, Maharashtra. We provide private security, institutional housekeeping, hospital sanitization, and certified manpower deployment to prominent government agencies and private-sector organizations.
+                {t.aboutText1}
               </p>
             </div>
 
@@ -87,20 +92,20 @@ export const AboutCompany: React.FC = () => {
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
                 <div className="flex items-center gap-2 text-blue-900 font-bold text-sm">
                   <Shield className="w-4 h-4 text-blue-600" />
-                  <span>Institutional Authority</span>
+                  <span>{t.aboutInstitutionalAuthority}</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Rigorous operational protocols, uncompromised verification standards, and complete compliance transparency for corporate leaders.
+                  {t.aboutInstitutionalAuthorityText}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
                 <div className="flex items-center gap-2 text-blue-900 font-bold text-sm">
                   <Users className="w-4 h-4 text-blue-600" />
-                  <span>Trained &amp; Groomed Workforce</span>
+                  <span>{t.aboutTrainedWorkforce}</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Every guard, helper, and technician undergoes structured behavior, emergency preparedness, and service hospitality drills.
+                  {t.aboutTrainedWorkforceText}
                 </p>
               </div>
             </div>
@@ -108,24 +113,24 @@ export const AboutCompany: React.FC = () => {
             {/* Strategic Pillars checklist */}
             <div className="space-y-2.5 pt-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Why Procurement Committees Select CITYTEC:
+                {t.aboutWhyChooseTitle}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Central Operations Control Desk in Pune</span>
+                  <span>{t.aboutReason1}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Direct GeM &amp; State Tender Eligibility</span>
+                  <span>{t.aboutReason2}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Zero Statutory Liabilities (EPF / ESIC Guaranteed)</span>
+                  <span>{t.aboutReason3}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Rapid Standby Force for Surprise Audits</span>
+                  <span>{t.aboutReason4}</span>
                 </div>
               </div>
             </div>
@@ -134,7 +139,7 @@ export const AboutCompany: React.FC = () => {
             <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
               <div className="space-y-0.5">
                 <div className="font-bold text-blue-950">
-                  Pune Registered Office:
+                  {isHindi ? 'पुणे पंजीकृत कार्यालय:' : 'Pune Registered Office:'}
                 </div>
                 <div className="text-slate-600">
                   {COMPANY_INFO.address.fullFormatted}
@@ -145,7 +150,7 @@ export const AboutCompany: React.FC = () => {
                 className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0B1E3F] hover:bg-blue-900 text-white font-bold transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Call {COMPANY_INFO.phone}</span>
+                <span>{isHindi ? 'कॉल करें' : 'Call'} {COMPANY_INFO.phone}</span>
               </a>
             </div>
 

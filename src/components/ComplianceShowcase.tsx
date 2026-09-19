@@ -1,8 +1,13 @@
 import React from 'react';
-import { ShieldCheck, FileCheck, CheckCircle2, Award, UserCheck, Scale, BadgeAlert, Lock } from 'lucide-react';
+import { ShieldCheck, FileCheck, CheckCircle2, Award, UserCheck, Scale, Lock } from 'lucide-react';
 import { STATUTORY_CREDENTIALS } from '../data/companyData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 export const ComplianceShowcase: React.FC = () => {
+  const { language, isHindi } = useLanguage();
+  const t = TRANSLATIONS[language];
+
   return (
     <section id="compliance" className="py-20 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,13 +16,13 @@ export const ComplianceShowcase: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Statutory &amp; Legal Protection</span>
+            <span>{t.complianceBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1E3F] tracking-tight">
-            100% Statutory Compliance &amp; Client Indemnity
+            {t.complianceTitle}
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Protect your organization from labor disputes, statutory penalties, and compliance breaches. CITYTEC assumes complete legal employer responsibility with certified monthly audit trails.
+            {t.complianceSubtitle}
           </p>
         </div>
 
@@ -53,32 +58,32 @@ export const ComplianceShowcase: React.FC = () => {
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/80 border border-blue-700 text-xs font-semibold text-cyan-300">
                 <Scale className="w-3.5 h-3.5" />
-                <span>Zero Client Liability Guarantee</span>
+                <span>{t.complianceZeroLiability}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white">
-                Monthly Statutory Challan Packets Provided With Every Invoice
+                {t.complianceGuaranteeTitle}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Along with your monthly billing statement, our accounts desk supplies stamped Electronic Challan Return (ECR) proofs for Provident Fund (EPF), Employees’ State Insurance (ESIC) contributions, professional tax vouchers, and signed wage registers. Your internal compliance team receives total documentation peace of mind.
+                {t.complianceGuaranteeText}
               </p>
             </div>
 
             <div className="lg:col-span-4 bg-white/5 border border-white/10 rounded-xl p-5 space-y-3 backdrop-blur-xs">
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
                 <UserCheck className="w-4 h-4 text-cyan-300 shrink-0" />
-                <span>Police Antecedent Clearances on Record</span>
+                <span>{isHindi ? 'स्थानीय पुलिस एवं सीआईडी द्वारा पूर्ववृत्त सत्यापन' : 'Police Antecedent Clearances on Record'}</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
                 <FileCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Biometric Real-Time Muster Logs</span>
+                <span>{isHindi ? 'बायोमेट्रिक रियल-टाइम उपस्थिति मस्टर' : 'Biometric Real-Time Muster Logs'}</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
                 <Lock className="w-4 h-4 text-amber-300 shrink-0" />
-                <span>Armed &amp; Unarmed Guard PSARA Training</span>
+                <span>{isHindi ? 'सशस्त्र एवं गैर-सशस्त्र पसारा सुरक्षा प्रशिक्षण' : 'Armed & Unarmed Guard PSARA Training'}</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-slate-200">
                 <Award className="w-4 h-4 text-blue-300 shrink-0" />
-                <span>Fire Drills &amp; Evacuation Certified</span>
+                <span>{isHindi ? 'आपातकालीन घटना प्रतिक्रिया एवं प्राथमिक उपचार' : 'Emergency Incident Response & First-Aid Trained'}</span>
               </div>
             </div>
 

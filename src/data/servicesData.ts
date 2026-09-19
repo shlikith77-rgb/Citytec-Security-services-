@@ -8,9 +8,9 @@ export const SERVICES_DATA: ServiceItem[] = [
     tagline: 'Vigilant, PSARA-Compliant Manned Guarding & Surveillance',
     category: 'Security',
     iconName: 'ShieldCheck',
-    image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/indian_security_guard_1789817853563.jpg',
     shortDescription: 'Trained, uniformed security guards, armed officers, perimeter security, and electronic surveillance for industrial, corporate, and government installations.',
-    fullDescription: 'CITYTEC Security Services delivers comprehensive manned guarding and physical security frameworks. Our security personnel undergo strict police verification, background validation, and rigorous drills in crisis management, access control, fire-safety protocol, and VIP escorting. We maintain a 24/7 central operational control desk to support quick-response deployments across Pune and Maharashtra.',
+    fullDescription: 'CITYTEC Security Services delivers comprehensive manned guarding and physical security frameworks. Our security personnel undergo strict police verification, background validation, and rigorous drills in crisis management, access control, emergency response protocol, and VIP escorting. We maintain a 24/7 central operational control desk to support quick-response deployments across Pune and Maharashtra.',
     keyDeliverables: [
       'Static & Patrol Guarding (Armed / Unarmed)',
       'Gatehouse & Visitor Management Systems',
@@ -19,7 +19,7 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Daily Digital Occurrence Logging & Threat Audits'
     ],
     sectorsSuited: ['Corporate IT Parks', 'Government Administrative Hubs', 'Industrial Estates & Warehouses', 'Financial Institutions & Banks'],
-    complianceStandards: ['PSARA Registered & Aligned', 'Police Verification on File', 'Fire Safety & First-Aid Certified', 'ISO 9001:2015 Operating Framework'],
+    complianceStandards: ['PSARA Registered & Aligned', 'Police Verification on File', 'Emergency Response & First-Aid Trained', 'ISO 9001:2015 Operating Framework'],
     personnelProfiles: ['Security Officers', 'Head Guards', 'Armed Escorts', 'Female Security Guards', 'Control Room Operators']
   },
   {
@@ -82,7 +82,7 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Infection Control Committee (ICC) Coordinated Logs'
     ],
     sectorsSuited: ['Multi-Specialty Hospitals', 'Diagnostic Imaging Laboratories', 'Pharma Cleanrooms', 'Trauma & Dialysis Centers'],
-    complianceStandards: ['Bio-Medical Waste Management Rules 2016', 'NABH Sanitization Criteria Aligned', 'Hospital-Grade Disinfectant Approvals', 'Hepatitis B Vaccinated Crews'],
+    complianceStandards: ['Bio-Medical Waste Management Rules 2016', 'Hospital Infection Control Protocols Aligned', 'Hospital-Grade Disinfectant Approvals', 'Hepatitis B Vaccinated Crews'],
     personnelProfiles: ['Healthcare Sanitation Specialists', 'Biomedical Waste Handlers', 'Clinical Orderlies', 'Hygiene Technicians']
   },
   {

@@ -1,0 +1,258 @@
+export const TRANSLATIONS = {
+  en: {
+    // Header & Global
+    topDispatch: '24/7 Operational Command & Patrol Dispatch',
+    puneHq: 'Pune HQ',
+    emergencyCall: 'Emergency Hotline',
+    langSwitchLabel: 'हिन्दी',
+    langSwitchTitle: 'Switch to Hindi',
+    navHome: 'Home',
+    navServices: '8 Services',
+    navClients: 'Clients & Defense',
+    navSectors: 'Sectors',
+    navCompliance: 'Compliance',
+    navFaq: 'FAQ',
+    navEstimator: 'RFP Estimator',
+    navAbout: 'About Us',
+    navContact: 'Contact HQ',
+    getQuoteBtn: 'Request Proposal',
+    legalBtn: 'Privacy & Terms',
+
+    // Hero
+    heroBadge: 'Government & Private Enterprise Security Partner',
+    heroTitlePrefix: 'Corporate Security, Facility Management &',
+    heroTitleHighlight: 'Manpower Outsourcing',
+    heroSubtitle: 'CITYTEC SECURITY SERVICES LLP provides institutional-grade guarding, hospital sanitization, corporate housekeeping, and certified manpower deployment across Pune and Maharashtra with 100% statutory compliance.',
+    heroSectorGov: 'Government Sector',
+    heroSectorGovSub: 'GeM Tenders, PSUs, Secretariats & Defense Hubs',
+    heroSectorPvt: 'Private Enterprises',
+    heroSectorPvtSub: 'IT Campuses, BFSI, Hospitals & Manufacturing',
+    heroBtnEstimator: 'Calculate Manpower & RFP',
+    heroBtnServices: 'View 8 Core Services',
+    heroDirectDispatch: 'Direct Pune Dispatch',
+    heroPoliceVerified: '100% Police Verified Staff',
+    heroPsaraCompliant: 'PSARA Maharashtra Compliant',
+    heroStatutoryGuaranteed: 'ESIC, EPF & Minimum Wage Guaranteed',
+    heroCardTitle: 'Operational Readiness',
+    heroCardSub: 'Pune Central Command & Deployment Hub',
+    heroActive247: 'Active 24/7',
+    heroComplianceStandard: 'Statutory Compliance Standard',
+    heroPsaraCheck: 'Private Security Regulation (PSARA)',
+    heroGemCheck: 'GeM Government e-Marketplace',
+    heroEsicCheck: 'ESIC & EPF Electronic Remittance',
+    heroOfficeLine: 'Pune Office: Jaiganeshvishwa, SN 46',
+    heroOfficeLink: 'Office Details →',
+
+    // Trust Pillars
+    pillarsTitle: 'Engineered on Six Institutional Pillars',
+    pillarsSubtitle: 'Every deployment is executed with military-inspired discipline, audited transparency, and relentless operational oversight.',
+
+    // Services Section
+    servicesBadge: 'Comprehensive Capability Matrix',
+    servicesTitle: '8 Integrated Facility & Workforce Disciplines',
+    servicesSubtitle: 'Tailored for government tender mandates and enterprise SLAs. Select any service to inspect operational deliverables, personnel profiles, and compliance frameworks.',
+    servicesFilterAll: 'All 8 Services',
+    servicesFilterSecurity: 'Security',
+    servicesFilterFacility: 'Facility Management',
+    servicesFilterManpower: 'Manpower Supply',
+    servicesFilterSpecialized: 'Specialized Sanitation',
+    servicesViewDetails: 'View Deliverables & SLA',
+    servicesRequestQuote: 'Request RFP / Quote',
+
+    // Clients Section
+    clientsBadge: 'Institutional Deployments & Credibility',
+    clientsTitle: 'Honored Defense & Government Clients',
+    clientsSubtitle: 'Trusted by premier defense establishments, ordnance factories, quality assurance wings, armed forces formations, and public sector organizations.',
+    clientsTabAll: 'All Clients (11)',
+    clientsTabArmedForces: 'Armed Forces',
+    clientsTabOrdnance: 'Ordnance Factories',
+    clientsTabDgqaDrdo: 'Defense R&D / DGQA',
+    clientsScopeLabel: 'Operational Scope',
+    clientsLocLabel: 'Location',
+
+    // Sectors Section
+    sectorsBadge: 'Multi-Environment Expertise',
+    sectorsTitle: 'Government & Private Sector Readiness',
+    sectorsSubtitle: 'Different environments require distinct operating models. We deploy customized protocols for high-security public infrastructure and dynamic commercial environments.',
+
+    // Compliance Section
+    complianceBadge: 'Statutory & Legal Protection',
+    complianceTitle: '100% Statutory Compliance & Zero Client Liability',
+    complianceSubtitle: 'Protect your enterprise from labor disputes, statutory penalties, and compliance defaults. CITYTEC assumes full principal contractor responsibility with verified audit packets.',
+    complianceGuaranteeTitle: 'Monthly Statutory Challan Packets Provided With Every Invoice',
+    complianceGuaranteeText: 'Along with your monthly billing statement, our accounts desk supplies stamped Electronic Challan Return (ECR) proofs for Provident Fund (EPF), Employees’ State Insurance (ESIC) contributions, professional tax vouchers, and signed wage registers.',
+    complianceZeroLiability: 'Zero Client Liability Guarantee',
+
+    // FAQ Section
+    faqBadge: 'Frequently Asked Questions',
+    faqTitle: 'Frequently Asked Questions',
+    faqSubtitle: 'Clear answers on deployment lead-times, statutory ECR slips, police verification, GeM tender eligibility, and site supervision.',
+
+    // RFP Estimator Section
+    estimatorBadge: 'Interactive RFP Tool',
+    estimatorTitle: 'Corporate Manpower & Tender Estimator',
+    estimatorSubtitle: 'Estimate your required manpower deployment, calculate shift coverage, and immediately dispatch your specification brief to our Pune operations desk.',
+
+    // About Section
+    aboutBadge: 'Executive Profile',
+    aboutTitle: 'Setting New Benchmarks in Security, Facility & Manpower Excellence',
+    aboutText1: 'CITYTEC SECURITY SERVICES LLP is a premier integrated facility management and specialized manpower outsourcing enterprise headquartered in Pune, Maharashtra. Incorporated in 2026, our operations are led by experienced operational staff, veteran security supervisors, and seasoned field managers serving defense, government, and corporate enterprises.',
+    aboutInstitutionalAuthority: 'Institutional Authority',
+    aboutInstitutionalAuthorityText: 'Rigorous operational protocols, uncompromised verification standards, and complete compliance transparency for corporate and defense leaders.',
+    aboutTrainedWorkforce: 'Experienced & Trained Staff',
+    aboutTrainedWorkforceText: 'Every guard, helper, and technician undergoes structured behavior, emergency incident response, and service hospitality drills under experienced supervisors.',
+    aboutWhyChooseTitle: 'Why Procurement Committees Select CITYTEC:',
+    aboutReason1: 'Central Operations Control Desk in Pune',
+    aboutReason2: 'Direct GeM & Defense Tender Readiness',
+    aboutReason3: 'Zero Statutory Liabilities (EPF / ESIC Guaranteed)',
+    aboutReason4: 'Rapid Standby Reserve for Surprise Audits',
+
+    // Contact & Office Schedule
+    contactBadge: 'Pune Headquarters',
+    contactTitle: 'Official Registered Address & Operations Desk',
+    contactSubtitle: 'Connect with our operations command desk for site risk surveys, corporate RFPs, or emergency manpower deployment.',
+    contactOfficeScheduleTitle: 'Office Working Hours',
+    contactScheduleMonFri: 'Monday – Friday: 10:00 AM – 6:00 PM',
+    contactScheduleSat: 'Saturday: 10:00 AM – 5:00 PM',
+    contactScheduleSun: 'Sunday: Closed',
+    contactEmergency247: '24/7 Operational Command & Patrol Dispatch Active 365 Days',
+    contactRegAddress: 'Registered Office Address',
+    contactPhone: 'Contact Number',
+    contactEmail: 'Email Dispatch',
+
+    // Footer
+    footerRights: 'All Rights Reserved. Registered LLP in Pune, Maharashtra, India.',
+    footerIncorporationNote: 'Incorporated in 2026 • Experienced Operational Staff',
+    footerLegalNotice: 'Privacy Policy & Terms',
+    footerClientApproval: 'Client Content Approval',
+    footerDisclaimerNotice: 'Content published based on documentation provided and approved by CITYTEC SECURITY SERVICES LLP.'
+  },
+  hi: {
+    // Header & Global
+    topDispatch: '24/7 परिचालन कमान एवं गश्ती दल नियंत्रण कक्ष',
+    puneHq: 'पुणे मुख्यालय',
+    emergencyCall: 'आपातकालीन हॉटलाइन',
+    langSwitchLabel: 'English',
+    langSwitchTitle: 'अंग्रेज़ी में बदलें',
+    navHome: 'होम',
+    navServices: '8 मुख्य सेवाएं',
+    navClients: 'प्रतिष्ठित क्लाइंट एवं रक्षा',
+    navSectors: 'कार्य क्षेत्र',
+    navCompliance: 'वैधानिक अनुपालन',
+    navFaq: 'अक्सर पूछे जाने वाले प्रश्न',
+    navEstimator: 'कोटेशन अनुमानक',
+    navAbout: 'कंपनी परिचय',
+    navContact: 'मुख्यालय संपर्क',
+    getQuoteBtn: 'प्रस्ताव का अनुरोध',
+    legalBtn: 'गोपनीयता नीति एवं शर्तें',
+
+    // Hero
+    heroBadge: 'सरकारी एवं निजी प्रतिष्ठानों के विश्वसनीय सुरक्षा साझेदार',
+    heroTitlePrefix: 'कॉर्पोरेट सुरक्षा, एकीकृत फैसिलिटी प्रबंधन एवं',
+    heroTitleHighlight: 'मैनपावर आउटसोर्सिंग',
+    heroSubtitle: 'सिटीटेक सिक्योरिटी सर्विसेज एलएलपी पुणे और महाराष्ट्र में 100% कानूनी एवं वैधानिक अनुपालन के साथ पेशेवर सुरक्षा गार्ड, अस्पताल सैनिटाइजेशन, हाउसकीपिंग एवं कुशल मानव संसाधन तैनात करती है।',
+    heroSectorGov: 'सरकारी एवं सार्वजनिक क्षेत्र',
+    heroSectorGovSub: 'GeM टेंडर, पीएसयू, सचिवालय एवं रक्षा प्रतिष्ठान',
+    heroSectorPvt: 'निजी एवं कॉर्पोरेट क्षेत्र',
+    heroSectorPvtSub: 'आईटी पार्क, बीएफएसआई, अस्पताल एवं औद्योगिक विनिर्माण',
+    heroBtnEstimator: 'मैनपावर एवं कोटेशन गणना करें',
+    heroBtnServices: '8 मुख्य सेवाएं देखें',
+    heroDirectDispatch: 'सीधा पुणे नियंत्रण कक्ष',
+    heroPoliceVerified: '100% पुलिस सत्यापित कर्मचारी',
+    heroPsaraCompliant: 'महाराष्ट्र पसारा (PSARA) अनुपालन',
+    heroStatutoryGuaranteed: 'ईएसआईसी, ईपीएफ एवं न्यूनतम वेतन अनिवार्य',
+    heroCardTitle: 'परिचालन तत्परता',
+    heroCardSub: 'पुणे केंद्रीय नियंत्रण एवं तैनाती केंद्र',
+    heroActive247: 'सक्रिय 24/7',
+    heroComplianceStandard: 'वैधानिक अनुपालन मानक',
+    heroPsaraCheck: 'प्राइवेट सिक्योरिटी रेगुलेशन (PSARA)',
+    heroGemCheck: 'GeM सरकारी ई-मार्केटप्लेस',
+    heroEsicCheck: 'ESIC एवं EPF इलेक्ट्रॉनिक चालान',
+    heroOfficeLine: 'पुणे कार्यालय: जयगणेशविश्व, एसएन 46',
+    heroOfficeLink: 'कार्यालय विवरण →',
+
+    // Trust Pillars
+    pillarsTitle: 'छह संस्थागत स्तंभों पर आधारित विश्वसनीयता',
+    pillarsSubtitle: 'प्रत्येक तैनाती अनुशासन, पारदर्शिता, पुलिस सत्यापन और निरंतर वरिष्ठ पर्यवेक्षण के साथ संचालित की जाती है।',
+
+    // Services Section
+    servicesBadge: 'व्यापक कार्य क्षमता',
+    servicesTitle: '8 एकीकृत फैसिलिटी एवं कार्यबल सेवाएं',
+    servicesSubtitle: 'सरकारी टेंडर नियमों और कॉर्पोरेट समझौतों के अनुरूप निर्मित। कार्य विवरण, कर्मचारी प्रोफाइल एवं नियमों की समीक्षा हेतु किसी भी सेवा पर क्लिक करें।',
+    servicesFilterAll: 'सभी 8 सेवाएं',
+    servicesFilterSecurity: 'सुरक्षा सेवाएं',
+    servicesFilterFacility: 'फैसिलिटी प्रबंधन',
+    servicesFilterManpower: 'मैनपावर आपूर्ति',
+    servicesFilterSpecialized: 'विशिष्ट सैनिटाइजेशन',
+    servicesViewDetails: 'कार्य विवरण एवं मानक देखें',
+    servicesRequestQuote: 'कोटेशन / RFP अनुरोध करें',
+
+    // Clients Section
+    clientsBadge: 'प्रतिष्ठित तैनाती एवं कार्य अनुभव',
+    clientsTitle: 'हमारे सम्मानित रक्षा एवं सरकारी क्लाइंट',
+    clientsSubtitle: 'आयुध निर्माणियों, तीनों सेनाओं (थल, नौ एवं वायु सेना), गुणवत्ता आश्वासन विंग (DGQA), रक्षा अनुसंधान (DRDO) एवं सार्वजनिक उपक्रमों द्वारा विश्वस्त।',
+    clientsTabAll: 'सभी क्लाइंट (11)',
+    clientsTabArmedForces: 'सशस्त्र सेनाएं',
+    clientsTabOrdnance: 'आयुध निर्माणियां',
+    clientsTabDgqaDrdo: 'रक्षा अनुसंधान एवं DGQA',
+    clientsScopeLabel: 'सेवा दायरा',
+    clientsLocLabel: 'स्थान',
+
+    // Sectors Section
+    sectorsBadge: 'बहु-क्षेत्रीय विशेषज्ञता',
+    sectorsTitle: 'सरकारी एवं निजी क्षेत्र के लिए विशेष तत्परता',
+    sectorsSubtitle: 'विभिन्न परिसरों की आवश्यकताएं भिन्न होती हैं। हम संवेदनशील सार्वजनिक प्रतिष्ठानों तथा गतिशील कॉर्पोरेट परिसरों के लिए अनुकूलित सुरक्षा एवं सेवा प्रोटोकॉल लागू करते हैं।',
+
+    // Compliance Section
+    complianceBadge: 'वैधानिक एवं कानूनी संरक्षण',
+    complianceTitle: '100% वैधानिक अनुपालन एवं शून्य क्लाइंट दायित्व',
+    complianceSubtitle: 'श्रम विवादों, कानूनी नोटिसों और वैधानिक दंड से अपने संस्थान को पूर्ण सुरक्षित रखें। सिटीटेक सत्यापित ऑडिट दस्तावेजों के साथ पूर्ण जिम्मेदारी निभाता है।',
+    complianceGuaranteeTitle: 'प्रत्येक चालान के साथ मासिक वैधानिक चालान पैकेट उपलब्ध',
+    complianceGuaranteeText: 'आपके मासिक बिल के साथ हमारे लेखा विभाग द्वारा ईपीएफ (EPF), ईएसआईसी (ESIC) के इलेक्ट्रॉनिक चालान रिटर्न (ECR), व्यावसायिक कर रसीदें और हस्ताक्षरित वेतन रजिस्टर उपलब्ध कराए जाते हैं।',
+    complianceZeroLiability: 'शून्य क्लाइंट दायित्व गारंटी',
+
+    // FAQ Section
+    faqBadge: 'अक्सर पूछे जाने वाले प्रश्न',
+    faqTitle: 'अक्सर पूछे जाने वाले प्रश्न (FAQ)',
+    faqSubtitle: 'तैनाती की समय-सीमा, वैधानिक ईसीआर पर्चियां, पुलिस सत्यापन, GeM टेंडर योग्यता एवं ऑन-साइट पर्यवेक्षण से संबंधित विस्तृत जानकारी।',
+
+    // RFP Estimator Section
+    estimatorBadge: 'इंटरैक्टिव आरएफपी टूल',
+    estimatorTitle: 'कॉर्पोरेट मैनपावर एवं टेंडर लागत अनुमानक',
+    estimatorSubtitle: 'अपनी आवश्यकता के अनुसार मैनपावर संख्या और शिफ्ट मॉडल चुनें तथा तुरंत पुणे ऑपरेशंस डेस्क को विवरण भेजें।',
+
+    // About Section
+    aboutBadge: 'कंपनी परिचय',
+    aboutTitle: 'सुरक्षा, फैसिलिटी एवं मानव संसाधन प्रबंधन में नए मानक',
+    aboutText1: 'सिटीटेक सिक्योरिटी सर्विसेज एलएलपी (CITYTEC SECURITY SERVICES LLP) पुणे, महाराष्ट्र में स्थित एक प्रमुख एकीकृत फैसिलिटी एवं मैनपावर आउटसोर्सिंग संस्था है। वर्ष 2026 में निगमित, हमारी कंपनी अनुभवी परिचालन कर्मचारियों, वरिष्ठ सुरक्षा पर्यवेक्षकों और कुशल फील्ड प्रबंधकों द्वारा संचालित है जो रक्षा, सरकारी एवं निजी संस्थानों को सेवाएं प्रदान करते हैं।',
+    aboutInstitutionalAuthority: 'संस्थागत अधिकार एवं विश्वसनीयता',
+    aboutInstitutionalAuthorityText: 'कठोर परिचालन नियम, अटूट सत्यापन मानक एवं कॉरपोरेट और रक्षा अधिकारियों के लिए पूर्ण कानूनी पारदर्शिता।',
+    aboutTrainedWorkforce: 'अनुभवी एवं प्रशिक्षित कार्यबल',
+    aboutTrainedWorkforceText: 'प्रत्येक सुरक्षा गार्ड, सहायक और तकनीशियन वरिष्ठ पर्यवेक्षकों की देखरेख में अनुशासित व्यवहार, आपातकालीन प्रतिक्रिया एवं आतिथ्य का प्रशिक्षण प्राप्त करता है।',
+    aboutWhyChooseTitle: 'संस्थान सिटीटेक को क्यों चुनते हैं:',
+    aboutReason1: 'पुणे में केंद्रीय परिचालन नियंत्रण डेस्क',
+    aboutReason2: 'GeM एवं रक्षा निविदाओं के लिए पूर्ण तत्परता',
+    aboutReason3: 'शून्य वैधानिक दायित्व (EPF / ESIC गारंटीड चालान)',
+    aboutReason4: 'आकस्मिक निरीक्षण एवं ऑडिट के लिए अतिरिक्त रिजर्व बल',
+
+    // Contact & Office Schedule
+    contactBadge: 'पुणे मुख्यालय',
+    contactTitle: 'आधिकारिक पंजीकृत कार्यालय एवं परिचालन डेस्क',
+    contactSubtitle: 'परिसर सुरक्षा सर्वेक्षण, कॉर्पोरेट टेंडर या तत्काल मैनपावर तैनाती के लिए हमारे परिचालन डेस्क से संपर्क करें।',
+    contactOfficeScheduleTitle: 'कार्यालय कार्य समय',
+    contactScheduleMonFri: 'सोमवार – शुक्रवार: प्रातः 10:00 – सायं 6:00',
+    contactScheduleSat: 'शनिवार: प्रातः 10:00 – सायं 5:00',
+    contactScheduleSun: 'रविवार: अवकाश (बंद)',
+    contactEmergency247: '24/7 परिचालन कमान एवं गश्ती नियंत्रण कक्ष वर्ष के 365 दिन सक्रिय',
+    contactRegAddress: 'पंजीकृत कार्यालय का पता',
+    contactPhone: 'संपर्क नंबर',
+    contactEmail: 'ईमेल संपर्क',
+
+    // Footer
+    footerRights: 'सर्वाधिकार सुरक्षित। पुणे, महाराष्ट्र, भारत में पंजीकृत एलएलपी।',
+    footerIncorporationNote: 'निगमन वर्ष 2026 • अनुभवी परिचालन कर्मचारी',
+    footerLegalNotice: 'गोपनीयता नीति एवं नियम व शर्तें',
+    footerClientApproval: 'क्लाइंट सामग्री अनुमोदन',
+    footerDisclaimerNotice: 'सिटीटेक सिक्योरिटी सर्विसेज एलएलपी द्वारा उपलब्ध कराए गए एवं अनुमोदित दस्तावेजों के आधार पर प्रकाशित सामग्री।'
+  }
+};
