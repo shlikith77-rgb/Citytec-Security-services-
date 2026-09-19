@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, Building, Award, CheckCircle2, Phone, MapPin, Users, Calendar, Briefcase, UserCheck, BadgeCheck } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 import { COMPANY_INFO } from '../data/companyData';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
@@ -57,17 +58,9 @@ export const AboutCompany: React.FC = () => {
               </div>
             </div>
 
-            {/* Subtle floating gold seal */}
-            <div className="hidden sm:flex absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br from-[#0B1E3F] to-[#153465] border-2 border-[#D4AF37] p-2 shadow-xl items-center justify-center text-center flex-col">
-              <span className="text-[9px] font-bold text-[#D4AF37] uppercase tracking-widest">
-                VERIFIED
-              </span>
-              <span className="text-xs font-black text-white">
-                100%
-              </span>
-              <span className="text-[8px] text-blue-200 uppercase">
-                STATUTORY
-              </span>
+            {/* Official Registered Company Brand Seal */}
+            <div className="hidden sm:flex absolute -bottom-8 -right-6 p-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xl items-center justify-center">
+              <BrandLogo layout="stacked" size="sm" />
             </div>
           </div>
 

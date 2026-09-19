@@ -12,7 +12,6 @@ import { RFPQuoteEstimator } from './components/RFPQuoteEstimator';
 import { AboutCompany } from './components/AboutCompany';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { LogoUploadModal } from './components/LogoUploadModal';
 import { LegalModal } from './components/LegalModal';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { ServiceItem } from './types';
@@ -23,15 +22,6 @@ import { Phone, MessageSquare, ArrowUp } from 'lucide-react';
 const MainAppContent: React.FC = () => {
   const { isHindi } = useLanguage();
 
-  const [customLogoUrl, setCustomLogoUrl] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem('citytec_custom_logo') || null;
-    } catch {
-      return null;
-    }
-  });
-
-  const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
   const [preselectedServiceForEstimator, setPreselectedServiceForEstimator] = useState<string>('Security Services');
@@ -44,19 +34,6 @@ const MainAppContent: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleApplyLogo = (newLogoUrl: string | null) => {
-    setCustomLogoUrl(newLogoUrl);
-    try {
-      if (newLogoUrl) {
-        localStorage.setItem('citytec_custom_logo', newLogoUrl);
-      } else {
-        localStorage.removeItem('citytec_custom_logo');
-      }
-    } catch (e) {
-      console.warn('LocalStorage error:', e);
-    }
-  };
 
   const handleSelectServiceForModal = (service: ServiceItem) => {
     setActiveModalService(service);
@@ -87,8 +64,6 @@ const MainAppContent: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 font-['Plus_Jakarta_Sans',sans-serif]">
       {/* 1. Header with Language Switcher, Emergency Dispatch Bar, Legal Trigger & Nav */}
       <Header
-        customLogoUrl={customLogoUrl}
-        onOpenLogoModal={() => setIsLogoModalOpen(true)}
         onOpenLegalModal={() => setIsLegalModalOpen(true)}
       />
 
@@ -137,8 +112,6 @@ const MainAppContent: React.FC = () => {
 
       {/* 12. Institutional Footer */}
       <Footer
-        customLogoUrl={customLogoUrl}
-        onOpenLogoModal={() => setIsLogoModalOpen(true)}
         onOpenLegalModal={() => setIsLegalModalOpen(true)}
         onSelectServiceTitle={handleServiceSelectFromFooter}
       />
@@ -148,14 +121,6 @@ const MainAppContent: React.FC = () => {
         service={activeModalService}
         onClose={() => setActiveModalService(null)}
         onSelectForQuote={(serviceTitle) => handleQuickQuote(serviceTitle)}
-      />
-
-      {/* Logo Customizer / Upload Preview Modal */}
-      <LogoUploadModal
-        isOpen={isLogoModalOpen}
-        onClose={() => setIsLogoModalOpen(false)}
-        currentLogo={customLogoUrl}
-        onApplyLogo={handleApplyLogo}
       />
 
       {/* Privacy Policies, Terms & Conditions, and Clients Approval Modal */}

@@ -1,5 +1,5 @@
 import { ServiceItem } from '../types';
-import securityGuardImage from '../assets/images/security-guard-outside-gate.jpg';
+import securityGuardImage from '../assets/images/security-guard-office-outdoor.jpg';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {

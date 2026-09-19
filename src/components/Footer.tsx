@@ -8,15 +8,11 @@ import { TRANSLATIONS } from '../data/translations';
 import { HINDI_SERVICES_MAP } from '../data/hindiData';
 
 interface FooterProps {
-  customLogoUrl: string | null;
-  onOpenLogoModal: () => void;
   onOpenLegalModal: () => void;
   onSelectServiceTitle: (serviceTitle: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
-  customLogoUrl,
-  onOpenLogoModal,
   onOpenLegalModal,
   onSelectServiceTitle,
 }) => {
@@ -37,9 +33,8 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Column 1: Company Profile (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <BrandLogo
-              customLogoUrl={customLogoUrl}
               variant="footer"
-              onClickUpload={onOpenLogoModal}
+              size="md"
             />
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm pt-2">
               <strong className="text-white font-medium">{COMPANY_INFO.legalName}</strong> {isHindi
@@ -80,13 +75,6 @@ export const Footer: React.FC<FooterProps> = ({
               >
                 <Scale className="w-3 h-3 text-amber-400" />
                 <span>{t.legalBtn}</span>
-              </button>
-
-              <button
-                onClick={onOpenLogoModal}
-                className="text-[11px] text-slate-400 hover:text-white underline transition-colors"
-              >
-                Preview Official Logo
               </button>
             </div>
           </div>

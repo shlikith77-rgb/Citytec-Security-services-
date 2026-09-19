@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, Shield, Menu, X, ChevronRight, FileText, Upload, Globe, Scale } from 'lucide-react';
+import { Phone, MapPin, Shield, Menu, X, ChevronRight, FileText, Globe, Scale } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { COMPANY_INFO } from '../data/companyData';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
-  customLogoUrl: string | null;
-  onOpenLogoModal: () => void;
   onOpenLegalModal?: () => void;
   onNavigateToService?: (serviceId: string) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  customLogoUrl,
-  onOpenLogoModal,
   onOpenLegalModal,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -82,16 +78,6 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
-            {/* Logo Preview utility trigger */}
-            <button
-              onClick={onOpenLogoModal}
-              className="inline-flex items-center gap-1 text-[11px] text-amber-300 hover:text-amber-200 transition-colors font-medium px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30"
-              title="Preview Official Logo"
-            >
-              <Upload className="w-3 h-3" />
-              <span>Logo</span>
-            </button>
-
             <a
               href={`tel:${COMPANY_INFO.phone}`}
               className="flex items-center gap-1.5 text-white hover:text-cyan-300 font-semibold text-[12px] tracking-wide transition-colors group"
@@ -116,9 +102,8 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo */}
           <a href="#" className="flex items-center group">
             <BrandLogo
-              customLogoUrl={customLogoUrl}
               variant="light"
-              onClickUpload={onOpenLogoModal}
+              size="md"
             />
           </a>
 
@@ -232,17 +217,6 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               )}
             </div>
-
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                onOpenLogoModal();
-              }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold"
-            >
-              <Upload className="w-3.5 h-3.5 text-amber-700" />
-              <span>Official Company Logo Preview</span>
-            </button>
 
             <a
               href={`tel:${COMPANY_INFO.phone}`}
